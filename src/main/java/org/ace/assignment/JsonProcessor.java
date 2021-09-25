@@ -1,7 +1,6 @@
 package org.ace.assignment;
 
 import com.google.gson.Gson;
-import com.google.gson.JsonIOException;
 import com.google.gson.JsonSyntaxException;
 import lombok.extern.java.Log;
 
@@ -9,9 +8,8 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.Arrays;
-import java.util.logging.Level;
 
-import org.ace.assignment.model.Root;
+import org.ace.assignment.json.model.Root;
 
 import static java.util.logging.Level.INFO;
 

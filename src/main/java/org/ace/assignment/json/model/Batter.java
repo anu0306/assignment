@@ -1,9 +1,9 @@
-package org.ace.assignment.model;
+package org.ace.assignment.json.model;
 
 import lombok.Data;
 
 @Data
-public class Topping {
+public class Batter {
     private String id;
     private String type;
 }

@@ -1,16 +1,14 @@
-package org.ace.assignment;
+package org.ace.assignment.json;
 
-import com.google.gson.Gson;
 import lombok.extern.java.Log;
-import org.ace.assignment.model.Root;
+import org.ace.assignment.JsonProcessor;
+import org.ace.assignment.json.model.Root;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
-
-import static java.util.logging.Level.INFO;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 

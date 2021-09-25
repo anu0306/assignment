@@ -1,4 +1,4 @@
-package org.ace.assignment.model;
+package org.ace.assignment.json.model;
 
 import lombok.Data;
 

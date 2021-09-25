@@ -1,6 +1,8 @@
 package org.ace.assignment;
 
+import com.google.gson.Gson;
 import lombok.extern.java.Log;
+import org.ace.assignment.model.Root;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -59,18 +61,19 @@ public class JsonProcessorTest {
         } finally {
             System.setOut(console);
         }
-        assertEquals(String.format("Json file read successful..\n", EOL), bytes.toString());
+        assertEquals(String.format("Json file processed successfully..\n", EOL), bytes.toString());
     }
 
     @Test
     void testReadJsonFile() {
         //String path = "src/test/resources/simple.json";
         String path = "src/test/resources/Sample.json";
+        Root obj = null;
         try {
-            JsonProcessor.readJsonFile(path);
+            obj = JsonProcessor.readJsonFile(path);
         } catch (Exception e){
             System.out.println(e.getStackTrace());
         }
-        assertEquals(String.format("Json file read successful..\n", EOL), bytes.toString());
+        assertEquals(Root.class, obj.getClass());
     }
 }

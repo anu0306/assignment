@@ -5,7 +5,6 @@ import org.ace.assignment.JsonProcessor;
 import org.ace.assignment.json.model.Root;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
@@ -40,24 +39,54 @@ public class JsonProcessorTest {
             System.setOut(console);
         }
         assertEquals(String.format("too few arguments..\n" +
-                "Usage:: JsonProcessor <JsonFilePath>\n", EOL, EOL), bytes.toString());
+                "Usage:: JsonProcessor <JsonFilePath> <TargetFilePath>\n", EOL, EOL), bytes.toString());
     }
 
     @Test
-    void testFileNotFound() {
+    void testToManyArguments() {
         try {
-            JsonProcessor.main("src/test/resources/invalid/Sample.json");
+            JsonProcessor.main("arg1", "arg2", "arg3");
         } finally {
             System.setOut(console);
         }
-        assertEquals(String.format("File not found..\n", EOL), bytes.toString());
+        assertEquals(String.format("too many arguments..\n" +
+                "Usage:: JsonProcessor <JsonFilePath> <TargetFilePath>\n", EOL, EOL), bytes.toString());
     }
 
-    @Disabled
+    @Test
+    void testJsonInputFileNotFound() {
+        try {
+            JsonProcessor.main("src/test/resources/invalid/Sample.json","dummy");
+        } finally {
+            System.setOut(console);
+        }
+        assertEquals(String.format("File not found :: src/test/resources/invalid/Sample.json (No such file or directory)\n", EOL), bytes.toString());
+    }
+
+    @Test
+    void testJsonOutFilePathNotFound() {
+        try {
+            JsonProcessor.main("src/test/resources/Sample.json","src/test/resources/invalid/table.txt");
+        } finally {
+            System.setOut(console);
+        }
+        assertEquals(String.format("File not found :: src/test/resources/invalid/table.txt (No such file or directory)\n", EOL), bytes.toString());
+    }
+
+    @Test
+    void testSameInputOutputFilePath() {
+        try {
+            JsonProcessor.main("src/test/resources/Sample.json", "src/test/resources/Sample.json");
+        } finally {
+            System.setOut(console);
+        }
+        assertEquals(String.format("Input file path and output file path is same. Not processing!!\n", EOL), bytes.toString());
+    }
+
     @Test
     void testValidFilePath() {
         try {
-            JsonProcessor.main("src/test/resources/Sample.json");
+            JsonProcessor.main("src/test/resources/Sample.json", "src/test/resources/test.txt");
         } finally {
             System.setOut(console);
         }

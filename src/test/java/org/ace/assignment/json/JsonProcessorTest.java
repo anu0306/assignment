@@ -39,7 +39,7 @@ public class JsonProcessorTest {
             System.setOut(console);
         }
         assertEquals(String.format("too few arguments..\n" +
-                "Usage:: JsonProcessor <JsonFilePath> <TargetFilePath>\n", EOL, EOL), bytes.toString());
+                "Usage:: java -jar JsonProcessor.jar <JsonFilePath> <TargetFilePath>\n", EOL, EOL), bytes.toString());
     }
 
     @Test
@@ -50,7 +50,7 @@ public class JsonProcessorTest {
             System.setOut(console);
         }
         assertEquals(String.format("too many arguments..\n" +
-                "Usage:: JsonProcessor <JsonFilePath> <TargetFilePath>\n", EOL, EOL), bytes.toString());
+                "Usage:: java -jar JsonProcessor.jar <JsonFilePath> <TargetFilePath>\n", EOL, EOL), bytes.toString());
     }
 
     @Test

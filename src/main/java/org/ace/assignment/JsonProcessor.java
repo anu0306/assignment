@@ -25,11 +25,11 @@ public class JsonProcessor {
         List<String> argsList = Arrays.stream(args).collect(Collectors.toList());
         if(argsList.size() < 2){
             System.out.println("too few arguments..");
-            System.out.println("Usage:: java -jar JsonProcessor <JsonFilePath> <TargetFilePath>");
+            System.out.println("Usage:: java -jar JsonProcessor.jar <JsonFilePath> <TargetFilePath>");
             return;
         } else if(argsList.size() > 2){
             System.out.println("too many arguments..");
-            System.out.println("Usage:: JsonProcessor <JsonFilePath> <TargetFilePath>");
+            System.out.println("Usage:: java -jar JsonProcessor.jar <JsonFilePath> <TargetFilePath>");
             return;
         }
         String jsonInputFilePath = argsList.get(0);

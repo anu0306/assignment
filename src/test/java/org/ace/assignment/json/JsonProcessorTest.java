@@ -32,7 +32,7 @@ public class JsonProcessorTest {
     }
 
     @Test
-    void testNoArguments() {
+    void noArgumentsTest() {
         try {
             JsonProcessor.main();
         } finally {
@@ -43,7 +43,7 @@ public class JsonProcessorTest {
     }
 
     @Test
-    void testOneArguments() {
+    void oneArgumentsTest() {
         try {
             JsonProcessor.main();
         } finally {
@@ -54,7 +54,7 @@ public class JsonProcessorTest {
     }
 
     @Test
-    void testToManyArguments() {
+    void toManyArgumentsTest() {
         try {
             JsonProcessor.main("arg1", "arg2", "arg3");
         } finally {
@@ -65,7 +65,7 @@ public class JsonProcessorTest {
     }
 
     @Test
-    void testJsonInputFileNotFound() {
+    void jsonInputFileNotFoundTest() {
         try {
             JsonProcessor.main("src/test/resources/invalid/Sample.json","dummy");
         } finally {
@@ -75,7 +75,7 @@ public class JsonProcessorTest {
     }
 
     @Test
-    void testJsonOutFilePathNotFound() {
+    void jsonOutFilePathNotFoundTest() {
         try {
             JsonProcessor.main("src/test/resources/Sample.json","src/test/resources/invalid/table.txt");
         } finally {
@@ -85,7 +85,7 @@ public class JsonProcessorTest {
     }
 
     @Test
-    void testSameInputOutputFilePath() {
+    void sameInputOutputFilePathTest() {
         try {
             JsonProcessor.main("src/test/resources/Sample.json", "src/test/resources/Sample.json");
         } finally {
@@ -95,7 +95,7 @@ public class JsonProcessorTest {
     }
 
     @Test
-    void testValidFilePath() {
+    void validFilePathTest() {
         try {
             JsonProcessor.main("src/test/resources/Sample.json", "src/test/resources/test.txt");
         } finally {
@@ -105,7 +105,7 @@ public class JsonProcessorTest {
     }
 
     @Test
-    void testReadJsonFile() {
+    void readJsonFileTest() {
         //String path = "src/test/resources/simple.json";
         String path = "src/test/resources/Sample.json";
         Root obj = null;

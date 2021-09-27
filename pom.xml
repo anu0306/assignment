@@ -61,6 +61,7 @@
                                 <descriptorRef>jar-with-dependencies</descriptorRef>
                             </descriptorRefs>
                             <finalName>JsonProcessor</finalName>
+                            <appendAssemblyId>false</appendAssemblyId>
                         </configuration>
                     </execution>
                 </executions>

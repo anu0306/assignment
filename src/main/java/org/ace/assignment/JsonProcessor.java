@@ -63,23 +63,14 @@ public class JsonProcessor {
         System.out.println("Json file processed successfully..");
     }
 
-    private static void writeToFile(String outPutFilePath, ArrayList<Tabular> tabularData) throws IOException{
-
-        log.info("Writing processed tabular data at following location :: ( " + outPutFilePath + " )");
-
-        FileWriter fileWriter = new FileWriter(outPutFilePath);
-        PrintWriter printWriter = new PrintWriter(fileWriter);
-
-        printWriter.printf("===================================================================================\n");
-        printWriter.printf("|%5s |%12s  |%9s   |%15s   |%25s  |\n","Id","Type","Name","Batter","Topping");
-        printWriter.printf("===================================================================================\n");
-        tabularData.forEach(row->{
-            printWriter.printf("|%5s |%12s  |%9s   |%15s   |%25s  |\n",row.getId(), row.getType(), row.getName(), row.getBatterType(), row.getToppingType());
-        });
-        printWriter.printf("===================================================================================\n");
-        printWriter.close();
-    }
-
+    /**
+     * Method to read data in Json format from specified Path and convert it to Java object.
+     *
+     * @param filePath
+     * @return jsonObject
+     * @throws FileNotFoundException
+     * @throws JsonSyntaxException
+     */
     public static Root readJsonFile(String filePath) throws FileNotFoundException, JsonSyntaxException {
         log.info("Reading Json input file :: ( " + filePath + " )");
 
@@ -90,6 +81,12 @@ public class JsonProcessor {
         return jsonObject;
     }
 
+    /**
+     * Method to Flatten Json object to Flat Tabular data format.
+     *
+     * @param root
+     * @return
+     */
     private static ArrayList<Tabular> processJsonToFlatTable(Root root) {
         ArrayList<Tabular> transformedTable = new ArrayList<>();
         root.getItems().getItem().forEach( item -> {
@@ -106,6 +103,30 @@ public class JsonProcessor {
             }
         });
         return transformedTable;
+    }
+
+    /**
+     * Method to write the formatted tabular data on target file.
+     *
+     * @param outPutFilePath
+     * @param tabularData
+     * @throws IOException
+     */
+    private static void writeToFile(String outPutFilePath, ArrayList<Tabular> tabularData) throws IOException{
+
+        log.info("Writing processed tabular data at following location :: ( " + outPutFilePath + " )");
+
+        FileWriter fileWriter = new FileWriter(outPutFilePath);
+        PrintWriter printWriter = new PrintWriter(fileWriter);
+
+        printWriter.printf("===================================================================================\n");
+        printWriter.printf("|%5s |%12s  |%9s   |%15s   |%25s  |\n","Id","Type","Name","Batter","Topping");
+        printWriter.printf("===================================================================================\n");
+        tabularData.forEach(row->{
+            printWriter.printf("|%5s |%12s  |%9s   |%15s   |%25s  |\n",row.getId(), row.getType(), row.getName(), row.getBatterType(), row.getToppingType());
+        });
+        printWriter.printf("===================================================================================\n");
+        printWriter.close();
     }
 }
 

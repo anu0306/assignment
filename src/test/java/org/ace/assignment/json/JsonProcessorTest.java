@@ -43,6 +43,17 @@ public class JsonProcessorTest {
     }
 
     @Test
+    void testOneArguments() {
+        try {
+            JsonProcessor.main();
+        } finally {
+            System.setOut(console);
+        }
+        assertEquals(String.format("too few arguments..\n" +
+                "Usage:: java -jar JsonProcessor.jar <JsonFilePath> <TargetFilePath>\n", EOL, EOL), bytes.toString());
+    }
+
+    @Test
     void testToManyArguments() {
         try {
             JsonProcessor.main("arg1", "arg2", "arg3");
